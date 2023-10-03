@@ -54,7 +54,7 @@
     gpg.enable = true;
     git = {
       enable = true;
-      userName = "Jonathan Casters";
+      userName = "jonathancasters";
       userEmail = "jonathancasters284@gmail.com";
 
       extraConfig = {
@@ -62,7 +62,7 @@
         user.signingkey = "B9A05FF81B94474C";
         commit.gpgSign = true;
         core = {
-          sshCommand = "ssh -i ~./ssh/id_ed25519_personal";
+          sshCommand = "ssh -i ~/.ssh/id_ed25519_personal";
         };
       };
 
@@ -70,11 +70,12 @@
         {
           contents = {
             user = {
+              name = "jpcaster";
               email = "jonathan.casters@ugent.be";
               signingkey = "40FF8380DB6F5FA9";
             };
             core = {
-              sshCommand = "ssh -i ~./ssh/id_ed25519_school";
+              sshCommand = "ssh -i ~/.ssh/id_ed25519_school";
             };
           };
           condition = "gitdir:~/ugent/";
