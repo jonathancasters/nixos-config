@@ -32,11 +32,6 @@
       unzip
       unrar
       xclip
-
-      # Development
-      # C/C++
-      libgccjit
-      cmake
     ];
     
     pointerCursor = {

@@ -52,6 +52,11 @@
       pulseaudio
       wget
       acpilight
+      # C/C++ development
+      gnumake
+      cmake
+      gcc_multi
+      binutils
     ];
   };
 
