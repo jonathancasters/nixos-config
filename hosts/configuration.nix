@@ -75,6 +75,10 @@
       syntaxHighlighting.enable = true;
       enableCompletion = true;
 
+      shellAliases = {
+        hpc = "ssh vsc45383@login.hpc.ugent.be -i ~/.ssh/id_ed25519_school";
+      };
+
       histSize = 100000;
       histFile = "~/.histfile";
 
