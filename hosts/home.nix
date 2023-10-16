@@ -21,6 +21,7 @@
       pavucontrol
       vlc
       flameshot
+      imagemagick
 
       # Apps
       brave
