@@ -10,7 +10,8 @@
     homeDirectory = "/home/${user}";
     
     packages = with pkgs; [
-      arandr
+      arandr    # Screen management
+      rofi      # Launch apps
 
       # Terminal 
       btop	# Resource manager
@@ -84,6 +85,10 @@
           condition = "gitdir:~/ugent/";
         }
       ];
+    };
+    rofi = {
+      enable = true;
+      location = "center";
     };
   };
 

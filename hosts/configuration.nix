@@ -44,7 +44,6 @@
     systemPackages = with pkgs; [
       alacritty
       autojump
-      rofi
       htop
       nano
       killall
