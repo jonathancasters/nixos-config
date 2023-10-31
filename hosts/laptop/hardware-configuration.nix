@@ -39,4 +39,7 @@
 
   hardware.bluetooth.enable = true;
   hardware.acpilight.enable = true;
+
+  # Enable hardware support for rendering purposes (computer-graphics)
+  hardware.opengl.enable = true;
 }
