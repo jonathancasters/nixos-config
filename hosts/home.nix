@@ -12,6 +12,7 @@
     packages = with pkgs; [
       arandr    # Screen management
       rofi      # Launch apps
+      dconf
 
       # Terminal 
       btop	# Resource manager

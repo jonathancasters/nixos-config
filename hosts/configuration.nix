@@ -104,6 +104,8 @@
     };
     # Color temperature screens
     redshift.enable = true;
+    # Remote control
+    teamviewer.enable = true;
   };
 
   nix = {

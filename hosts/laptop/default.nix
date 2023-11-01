@@ -27,12 +27,12 @@
       enable = true;
       layout = "us";
       displayManager = {
-        lightdm.enable = true;
+        lightdm = {
+          enable = true;
+        };
         defaultSession = "none+qtile";
       };
-      desktopManager.xfce.enable = true;
       windowManager.qtile.enable = true;
-      xkbVariant = "";
     };
   };
   networking = {
