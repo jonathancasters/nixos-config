@@ -52,6 +52,7 @@
       wget
       acpilight
       # C/C++ development
+      clang-tools
       gnumake
       cmake
       gcc_multi

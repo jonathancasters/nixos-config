@@ -64,9 +64,66 @@ let
     nmap("<leader>eq", ":tabclose<CR>")
 
     -- file explorer 
-    nmap("tt", ":NERDTreeFind<CR>")
+    nmap("<leader>fe", ":NvimTreeToggle<CR>")
+  '';
+  # plugin settings
+  plugin-config = ''
+    -- NVIM-TREE SETTINGS
+    -- disable netrw
+    g.loaded_netrw = 1
+    g.loaded_netrwPlugin = 1
+    -- set termguicolors to enable highlight groups
+    vim.opt.termguicolors = true
+    -- empty setup using defaults
+    require("nvim-tree").setup()
+    -- enable icons in tree
+    require("nvim-web-devicons").setup()
+
+
+    -- COC-SETTINGS
+    -- To support docker-compose auto-completion
+    vim.api.nvim_exec([[
+      augroup FileTypeYaml
+        autocmd!
+        autocmd FileType yaml if vim.fn.expand('%:t') == 'docker-compose.yml' | setlocal filetype=yaml.docker-compose | endif
+        autocmd FileType yaml if vim.fn.expand('%:t') == 'compose.yml' | setlocal filetype=yaml.docker-compose | endif
+      augroup END
+    ]], false)
+
+    g.coc_filetype_map = {
+      ['yaml.docker-compose'] = 'dockercompose',
+    }
+
+    -- ENABLE PLUGINS
+    vim.o.number = true
+    
+    require('gitsigns').setup()
+    require('ibl').setup()
+  '';
+
+  # custom theming
+  theme = ''
+    -- enable intigrations
+    require("catppuccin").setup({
+      integrations = {
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+      }
+    })
+
+    vim.cmd.colorscheme "catppuccin-latte"
   '';
 in {
+
+  home.packages = with pkgs; [
+    # install language server to enable auto-completion on docker-compose files
+    docker-compose-language-service
+    nixd
+    #kotlin-language-server
+    #haskell-language-server
+  ];
+
   programs = {
     neovim = {
       enable = true;
@@ -78,15 +135,62 @@ in {
       
       # auto-completion
       coc.enable = true;
+      coc.settings = {
+        "languageserver" = {
+          nix = {
+            command = "nixd";
+            filetypes = ["nix"];
+          };
+          dockerfile = {
+            command = "docker-langserver";
+            filetypes = ["dockerfile"];
+            args = ["--stdio"];
+          };
+          dockercompose = {
+            command = "docker-compose-langserver";
+            args = ["--stdio"];
+            filetypes = ["dockercompose"];
+            rootPatterns = [".git" ".env" "docker-compose.yml" "compose.yml"];
+          };
+#          haskell = {
+#            command = "haskell-language-server-wrapper";
+#            args = [ "--lsp" ];
+#            rootPatterns = [
+#              "*.cabal"
+#              "stack.yaml"
+#              "cabal.project"
+#              "package.yaml"
+#              "hie.yaml"
+#            ];
+#            filetypes = [ "haskell" "lhaskell" ];
+#          };
+#          kotlin = {
+#            command = "kotlin-language-server";
+#            filetypes = ["kotlin"];
+#          };
+        };
+      };
 
       # plugins to use within the editor
       plugins = with pkgs.vimPlugins; [
-        vim-nix               # helps formatting nix files
-        indent-blankline-nvim # indent guide lines
-        nerdtree              # file explorer
+        vim-nix                         # helps formatting nix files
+        vim-numbertoggle                # automatic switching between absolute and relative line numbers
+        indent-blankline-nvim           # indent guide lines
+        nvim-tree-lua                   # file explorer
+        nvim-web-devicons               # icons in file explorer
+        catppuccin-nvim                 # theming
+        gitsigns-nvim                   # indicate git changes
+        nvim-treesitter.withAllGrammars # syntax highlighting
+        coc-cmake                       # auto-completion for cmake
+        coc-clangd                      # auto-completion for c/c++
+        coc-sh                          # auto-completion for bash 
+        coc-python                      # auto-completion for python
+        coc-json                        # auto-completion json
+        #coc-java                        # auto-completion java
+        #coc-tsserver                    # auto-completion javascript / typescript
       ];
       
-      extraLuaConfig = utils + keymaps;
+      extraLuaConfig = utils + keymaps + plugin-config + theme;
     };
   };
 }
