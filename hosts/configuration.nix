@@ -57,6 +57,8 @@
       cmake
       gcc_multi
       binutils
+      # remote control
+      sshfs
     ];
   };
 
@@ -107,6 +109,7 @@
     redshift.enable = true;
     # Remote control
     teamviewer.enable = true;
+    openssh.allowSFTP = true;
   };
 
   nix = {
