@@ -51,6 +51,7 @@
       pulseaudio
       wget
       acpilight
+      networkmanagerapplet
       # C/C++ development
       clang-tools
       gnumake
