@@ -13,6 +13,7 @@
       arandr    # Screen management
       rofi      # Launch apps
       dconf
+      simplescreenrecorder
 
       # Terminal 
       btop	# Resource manager
