@@ -87,4 +87,16 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  # Make a specialisation that disables the GPU whilst on the go
+  specialisation = {
+    on-the-go.configuration = {
+      system.nixos.tags = [ "on-the-go" ];
+      hardware.nvidia = {
+        prime.offload.enable = lib.mkForce true;
+        prime.offload.enableOffloadCmd = lib.mkForce true;
+        prime.sync.enable = lib.mkForce false;
+      };
+    };
+  };
 }
