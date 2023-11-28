@@ -186,6 +186,7 @@ in {
         coc-sh                          # auto-completion for bash 
         coc-python                      # auto-completion for python
         coc-json                        # auto-completion json
+        coc-prettier                    # formatting
         #coc-java                        # auto-completion java
         #coc-tsserver                    # auto-completion javascript / typescript
       ];
