@@ -43,6 +43,8 @@
       jetbrains.pycharm-professional
       jetbrains.webstorm
       jetbrains.datagrip
+      
+      anki # flashcards
     ];
     
     pointerCursor = {
