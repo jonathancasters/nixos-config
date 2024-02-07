@@ -14,16 +14,22 @@
   outputs = inputs @ { self, nixpkgs, home-manager }:
     let
       user = "castersj";
+
+      mkLib = nixpkgs:
+        nixpkgs.lib.extend(
+          final: prev: (import ./lib {inherit (final) lib;}) // home-manager.lib
+        );
+
+      lib = mkLib nixpkgs.lib;
+
+      inherit (lib) mapModule;
     in 
     {
-      # TODO: make library function that reads dir and maps a function onto all nix files in that dir
-      nixpkgs.overlays = [
-        (import ./overlays/virtualbox.nix)
-      ]; 
+      nixpkgs.overlays = mapModule ./overlays import;
 
       nixosConfigurations = (
         import ./hosts {                                           # Imports ./hosts/default.nix
-          inherit (nixpkgs) lib;
+          inherit lib;
           inherit inputs user nixpkgs home-manager;
         }
       );
