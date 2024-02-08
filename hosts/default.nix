@@ -1,33 +1,31 @@
-{ inputs, user, lib, nixpkgs, home-manager, ... }:
-
+{ lib, inputs, user, nixpkgs, home-manager, ... }:
 let
-  system = "x86_64-linux";                  # Systen architecture
+  system = "x86_64-linux";                      # system architecture
 
-  pkgs = import nixpkgs {                   # Allow proprietary software
+  pkgs = import nixpkgs {                       # allow proprietary software
     inherit system;
     config.allowUnfree = true;
   };
 
-  lib = nixpkgs.lib;
+  args = {                                      # args to be made available in other modules
+    inherit pkgs inputs user;
+    hostName = "laptop";
+  };
+
 in 
 {
-  laptop = lib.nixosSystem {                     # Laptop profile
+  laptop = lib.nixosSystem {                    # laptop profile
     inherit system;
-    specialArgs = {
-      inherit pkgs inputs user;
-      hostName = "laptop";
-    };
-    modules = [
-      ./laptop                                    
-      ./configuration.nix
 
-      home-manager.nixosModules.home-manager {   # Set up home manager as module
+    specialArgs = args;                         # make args available in modules 
+
+    modules = [
+      ./configuration.nix                       # default module
+      ./laptop                                  # laptop-specific module 
+      home-manager.nixosModules.home-manager {  # home manager as module
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit pkgs user;
-          hostName = "laptop";
-        };
+        home-manager.extraSpecialArgs = args;   # pass arguments to ./home.nix
         home-manager.users.${user} = {
           imports = [
             ./home.nix
@@ -36,4 +34,6 @@ in
       }                        
     ];
   };
+
+  # INFO: add more profiles below when adding new devices
 }
