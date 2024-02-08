@@ -1,4 +1,5 @@
-{ lib, ... } : let
+{ lib, ... } : 
+let
   inherit (builtins) pathExists nameValuePair readDir;
   inherit (lib.strings) hasPrefix hasSuffix removeSuffix;
   inherit (lib.attrsets) filterAttrs mapAttrs';
