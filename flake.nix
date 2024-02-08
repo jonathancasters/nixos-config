@@ -15,12 +15,12 @@
     let
       user = "castersj";
 
+      # utility function that overlays the lib module
       mkLib = nixpkgs:
         nixpkgs.lib.extend(
           final: prev: (import ./lib {inherit (final) lib;}) // home-manager.lib
         );
-
-      lib = mkLib nixpkgs.lib;
+      lib = mkLib nixpkgs;
 
       inherit (lib) mapModule;
     in 
