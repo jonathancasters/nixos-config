@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, user, ... }:
 
 {
-  # System user
+  # define all system users
   users.users.${user} = {
     isNormalUser = true;
     description = "Jonathan Casters";
@@ -9,7 +9,7 @@
     shell = pkgs.zsh;
   };
 
-
+  # define locale settings
   time.timeZone = "Europe/Brussels";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -19,8 +19,10 @@
     };
   };
 
+  # enable gps
   location.provider = "geoclue2";
   
+  # TODO: Remove fonts here and add to 'theme' module
   fonts.fonts = with pkgs; [
     carlito
     vegur
@@ -42,15 +44,13 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [
-      alacritty
-      autojump
-      htop
-      nano
-      killall
-      alsa-utils
+      # process management
+      htop                      # process overview 
+      killall                   # kill process by name
+      # sound
+      alsa-utils                
       pulseaudio
-      wget
-      acpilight
+      # network management
       networkmanagerapplet
       # C/C++ development
       clang-tools
@@ -58,12 +58,15 @@
       cmake
       gcc_multi
       binutils
-      # remote control
-      sshfs
+      # other 
+      sshfs                    # remote filesystem
+      wget                     # download from url (in terminal)
+      acpilight                # replacement for xbacklight TODO: check if it works
     ];
   };
 
   programs = {
+    # file browser
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -72,6 +75,7 @@
         thunar-media-tags-plugin
       ];
     };
+    # terminal
     zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -96,7 +100,7 @@
   };
 
   services = {
-    # Sound
+    # sound
     pipewire = {
       enable = true;
       alsa = {
@@ -106,9 +110,9 @@
       pulse.enable = true;
       jack.enable = true;
     };
-    # Color temperature screens
+    # color temperature screens
     redshift.enable = true;
-    # Remote control
+    # remote control
     teamviewer.enable = true;
     openssh.allowSFTP = true;
   };
@@ -128,15 +132,8 @@
        keep-derivations      = true
     '';
   };
-  
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [(final: prev: {
-        virtualbox = prev.virtualbox.overrideAttrs (old: {
-          patches = (old.patches or []) ++ [ ../patches/vbox-7.0.10.patch ];
-        });
-  })];
 
-  # Virtualisation
+  # virtualisation
   virtualisation.virtualbox.host.enable = true;
   #virtualisation.virtualbox.host.enableExtensionPack = true;
   
