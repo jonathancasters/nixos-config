@@ -1,6 +1,15 @@
 { config, lib, pkgs, inputs, user, ... }:
 
 {
+  imports = [
+    ../modules
+  ];
+
+  # Custom modules settings
+  ${user} = {
+    development.enable = true;
+  };
+
   # define all system users
   users.users.${user} = {
     isNormalUser = true;
