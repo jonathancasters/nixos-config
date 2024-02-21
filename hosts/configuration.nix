@@ -8,13 +8,14 @@
   # Custom modules settings
   ${user} = {
     development.enable = true;
+    graphical.enable = true;
   };
 
   # define all system users
   users.users.${user} = {
     isNormalUser = true;
     description = "Jonathan Casters";
-    extraGroups = ["networkmanager" "wheel" "vboxusers" "video"];
+    extraGroups = ["networkmanager" "wheel" "vboxusers"];
     shell = pkgs.zsh;
   };
 
@@ -30,21 +31,6 @@
 
   # enable gps
   location.provider = "geoclue2";
-  
-  # TODO: Remove fonts here and add to 'theme' module
-  fonts.fonts = with pkgs; [
-    carlito
-    vegur
-    source-code-pro
-    jetbrains-mono
-    font-awesome
-    corefonts
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-      ];
-    })
-  ];
   
   environment = {
     variables = {

@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager }:
+  outputs = inputs @ { self, nixpkgs, home-manager}:
     let
       user = "castersj";
 

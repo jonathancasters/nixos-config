@@ -3,6 +3,6 @@
 {
   imports = [
     ./development
-    #./graphical
+    ./graphical
   ];
 }
