@@ -4,6 +4,7 @@
   imports = [
     ./editors
     ./git
+    ./docker
   ];
   
   options.${user}.development.enable = lib.mkOption {
@@ -16,6 +17,7 @@
       # TODO: add language servers to nvim
       development = {
         git.enable = lib.mkDefault true;
+        docker.enable = lib.mkDefault true;
       };
     };
   };
