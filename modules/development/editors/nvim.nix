@@ -2,7 +2,7 @@
 # Neovim configuration file
 #
 
-{ user, pkgs, ... }:
+{ config, lib, pkgs, user, ... }:
 
 let
   # custom lua code to make remapping easier
@@ -256,42 +256,49 @@ let
     })
   '';
 in {
+  options.${user}.development.nvim.enable = lib.mkOption {
+    default = false;
+    example = true;
+  };
 
-  home-manager.users.${user} = {
-    home.packages = with pkgs; [
-      nixd
-      llvmPackages_15.clang-unwrapped
-    ];
+  config = lib.mkIf config.${user}.development.docker.enable {
 
-    programs = {
-      neovim = {
-        enable = true;
-        defaultEditor = true;
+    home-manager.users.${user} = { ... } : {
+      home.packages = with pkgs; [
+        nixd
+        llvmPackages_15.clang-unwrapped
+      ];
 
-        # make sure that vi or vim also points to nvim
-        viAlias = true;
-        vimAlias = true;
+      programs = {
+        neovim = {
+          enable = true;
+          defaultEditor = true;
 
-        # plugins to use within the editor
-        plugins = with pkgs.vimPlugins; [
-          vim-nix                         # helps formatting nix files
-          vim-numbertoggle                # automatic switching between absolute and relative line numbers
-          indent-blankline-nvim           # indent guide lines
-          nvim-tree-lua                   # file explorer
-          nvim-web-devicons               # icons in file explorer
-          catppuccin-nvim                 # theming
-          gitsigns-nvim                   # indicate git changes
-          nvim-treesitter.withAllGrammars # syntax highlighting
-          nvim-lspconfig                  # language server
-          nvim-cmp                        # code completion
-          cmp-buffer                      # nvim-cmp source for buffer words
-          cmp-path                        # nvim-cmp source for filesystem paths
-          cmp-nvim-lsp                    # nvim-cmp source for neovim's built-in language server client
-          friendly-snippets               # Snippets collection for a set of different programming languages
-          luasnip                         # Snip engine
-        ];
-        
-        extraLuaConfig = utils + keymaps + plugin-config + theme + language-servers;
+          # make sure that vi or vim also points to nvim
+          viAlias = true;
+          vimAlias = true;
+
+          # plugins to use within the editor
+          plugins = with pkgs.vimPlugins; [
+            vim-nix                         # helps formatting nix files
+            vim-numbertoggle                # automatic switching between absolute and relative line numbers
+            indent-blankline-nvim           # indent guide lines
+            nvim-tree-lua                   # file explorer
+            nvim-web-devicons               # icons in file explorer
+            catppuccin-nvim                 # theming
+            gitsigns-nvim                   # indicate git changes
+            nvim-treesitter.withAllGrammars # syntax highlighting
+            nvim-lspconfig                  # language server
+            nvim-cmp                        # code completion
+            cmp-buffer                      # nvim-cmp source for buffer words
+            cmp-path                        # nvim-cmp source for filesystem paths
+            cmp-nvim-lsp                    # nvim-cmp source for neovim's built-in language server client
+            friendly-snippets               # Snippets collection for a set of different programming languages
+            luasnip                         # Snip engine
+          ];
+          
+          extraLuaConfig = utils + keymaps + plugin-config + theme + language-servers;
+        };
       };
     };
   };
