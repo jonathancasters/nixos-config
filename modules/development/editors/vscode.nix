@@ -14,9 +14,7 @@
         extensions = with pkgs.vscode-extensions; [
           ms-vscode-remote.remote-containers
           github.copilot
-          # theming
-          catppuccin
-          catppuccin-vsc-icons
+          #TODO: theming
         ];
       };
     };
