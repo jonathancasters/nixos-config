@@ -57,7 +57,8 @@
       sshfs                    # remote filesystem
       wget                     # download from url (in terminal)
       acpilight                # replacement for xbacklight TODO: check if it works
-      deja-dup
+      deja-dup                 # backups
+      ntfs3g                   # support ntfs mounts
     ];
   };
 
@@ -112,6 +113,10 @@
     teamviewer.enable = true;
     openssh.allowSFTP = true;
     gnome.gnome-keyring.enable = true;
+    # enable auto mounting for removable devices on Thunar
+    gvfs.enable = true;
+    # enable thumbnail images on Thunar
+    tumbler.enable = true;
   };
 
   nix = {
