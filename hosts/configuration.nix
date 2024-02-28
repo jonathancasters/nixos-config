@@ -57,6 +57,7 @@
       sshfs                    # remote filesystem
       wget                     # download from url (in terminal)
       acpilight                # replacement for xbacklight TODO: check if it works
+      deja-dup
     ];
   };
 
@@ -110,6 +111,7 @@
     # remote control
     teamviewer.enable = true;
     openssh.allowSFTP = true;
+    gnome.gnome-keyring.enable = true;
   };
 
   nix = {
