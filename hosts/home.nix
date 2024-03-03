@@ -43,12 +43,6 @@
       anki # flashcards
     ];
     
-    pointerCursor = {
-      gtk.enable = true;
-      name = "Catppucin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
     stateVersion = "23.05";
   };
   
@@ -69,22 +63,4 @@
     };
   };
   
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppucin-Mocha-Compact-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["blue"];
-        size = "compact";
-        variant = "mocha";
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "FiraCode Nerd Font Mono Medium";
-    };
-  };
 }

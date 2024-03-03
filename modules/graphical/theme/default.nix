@@ -41,6 +41,32 @@
           };
         };
       };
+
+      home.pointerCursor = {
+        gtk.enable = true;
+        name = "Catppucin-Latte-Light-Cursors";
+        package = pkgs.catppuccin-cursors.latteLight;
+        size = 16;
+      };
+
+      gtk = {
+        enable = true;
+        font = {
+          name = "FiraCode Nerd Font Mono Medium";
+        };
+        theme = {
+          name = "Catppucin-Latte-Compact-Blue-Light";
+          package = pkgs.catppuccin-gtk.override {
+            accents = ["blue"];
+            size = "compact";
+            variant = "latte";
+          };
+        };
+        iconTheme = {
+          name = "Papirus-Light";
+          package = pkgs.papirus-icon-theme;
+        };
+      };
     };
   };
 }
