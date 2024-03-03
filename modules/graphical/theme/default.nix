@@ -67,6 +67,14 @@
           package = pkgs.papirus-icon-theme;
         };
       };
+      # TODO: Check if this code below does anything
+      qt = {
+        enable = true;
+        style = {
+          name = "Catppuccin-Latte";
+          package = pkgs.catppuccin-qt5ct;
+        };
+      };
     };
   };
 }
