@@ -11,6 +11,9 @@
       dconf
       simplescreenrecorder
 
+      # printing
+      hplip
+
       # Terminal 
       btop	# Resource manager
       ranger	# File manager
