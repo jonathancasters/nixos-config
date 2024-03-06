@@ -4,5 +4,6 @@
   imports = [
     ./development
     ./graphical
+    ./printing
   ];
 }

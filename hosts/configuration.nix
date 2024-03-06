@@ -9,6 +9,7 @@
   ${user} = {
     development.enable = true;
     graphical.enable = true;
+    printing.enable = true;
   };
 
   # define all system users
