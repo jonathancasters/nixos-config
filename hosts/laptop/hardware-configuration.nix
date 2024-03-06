@@ -26,7 +26,7 @@
   fileSystems."/mnt/seagate-backup-hub" = {
     device = "/dev/disk/by-uuid/C80EDA3F0EDA266A";
     fsType = "ntfs-3g";
-    options = [ "noauto" "rw" "async" "suid" ];
+    options = [ "noauto" "rw" "async" "suid" "x-gvfs-show"];
   };
 
   swapDevices = [ ];
