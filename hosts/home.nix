@@ -43,7 +43,7 @@
       jetbrains.webstorm
       jetbrains.datagrip
 
-      postman
+      insomnia
       
       anki # flashcards
     ];
