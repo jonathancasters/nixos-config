@@ -42,6 +42,8 @@
       jetbrains.pycharm-professional
       jetbrains.webstorm
       jetbrains.datagrip
+
+      postman
       
       anki # flashcards
     ];
