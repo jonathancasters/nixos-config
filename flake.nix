@@ -9,9 +9,17 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager}:
+  outputs = inputs @ { self, nixpkgs, home-manager, agenix}:
     let
       user = "castersj";
 
@@ -30,7 +38,7 @@
       nixosConfigurations = (
         import ./hosts {                                           # Imports ./hosts/default.nix
           inherit lib;
-          inherit inputs user nixpkgs home-manager;
+          inherit inputs user nixpkgs home-manager agenix;
         }
       );
     };

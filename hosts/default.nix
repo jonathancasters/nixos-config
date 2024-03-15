@@ -1,4 +1,4 @@
-{ lib, inputs, user, nixpkgs, home-manager, ... }:
+{ lib, inputs, user, nixpkgs, home-manager, agenix, ... }:
 let
   system = "x86_64-linux";                      # system architecture
 
@@ -20,6 +20,7 @@ in
     specialArgs = args;                         # make args available in modules 
 
     modules = [
+      agenix.nixosModules.default               # secrets manager
       ./configuration.nix                       # default module
       ./laptop                                  # laptop-specific module 
       home-manager.nixosModules.home-manager {  # home manager as module

@@ -60,6 +60,7 @@
       acpilight                # replacement for xbacklight TODO: check if it works
       deja-dup                 # backups
       ntfs3g                   # support ntfs mounts
+      inputs.agenix.packages.x86_64-linux.default
     ];
   };
 
