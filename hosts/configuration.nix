@@ -15,9 +15,7 @@
         enable = true;
         wireless-interface = "wlp44s0";
         wired-interfaces = {
-          "enp45s0" = {
-            macAddress = "58:11:22:88:fe:05";
-          };
+          "enp45s0" = { };
         };
       };
     };

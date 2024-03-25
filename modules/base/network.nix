@@ -11,9 +11,9 @@
       example = "wlp2s0";
     };
     wired-interfaces = lib.mkOption {
+      type = lib.types.attrs;
       example = { 
         "enp0s29f0u1u2" = { 
-          macAddress = "10:65:30:85:bb:18"; 
         }; 
       };
     };
@@ -77,6 +77,11 @@
       };
     };
 
+    /*
+    systemd-networkd is the network configuration component of the systemd software suite. 
+    It is well integrated into NixOS below systemd.network and should be preferred over networking.interfaces options for most use cases, 
+    since it receives far superior maintenance.
+    */
     systemd.network = {
       enable = true;
       networks = {
