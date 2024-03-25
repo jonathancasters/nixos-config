@@ -1,6 +1,7 @@
 { config, lib, pkgs, user, ... }:
 {
   imports = [
+    ./xserver
     ./theme
   ];
 
@@ -13,7 +14,13 @@
     users.users.${user}.extraGroups = [ "input" "video" ];
 
     ${user}.graphical = {
-      theme.enable = true;
+      xserver = {
+        enable = true;
+      };
+      theme = {
+        enable = true;
+        xserver = true;
+      };
     };
   };
 }

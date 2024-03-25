@@ -23,16 +23,5 @@
   services = {
     tlp.enable = true;                  # powermanagement
     blueman.enable = true;              # bluetooth
-    xserver = {
-      enable = true;
-      layout = "us";
-      displayManager = {
-        lightdm = {
-          enable = true;
-        };
-        defaultSession = "none+qtile";
-      };
-      windowManager.qtile.enable = true;
-    };
   };
 }
