@@ -88,7 +88,7 @@
     services.xserver.displayManager.lightdm = lib.mkIf config.${user}.graphical.theme.xserver {
       background = ./wall.png;
       greeters.slick = {
-        draw-user-backgrounds = true;
+        draw-user-backgrounds = false;
         theme = {
             name = "Catppucin-Latte-Compact-Blue-Light";
             package = pkgs.catppuccin-gtk.override {

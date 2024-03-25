@@ -11,6 +11,15 @@
     services.xserver = {
       enable = true;
       layout = "us";
+      desktopManager = {
+        xfce = {
+          enable = true;
+          noDesktop = true;
+          enableXfwm = false;
+          enableScreensaver = false;
+        };
+        wallpaper.mode = "scale";
+      };
       displayManager = {
         lightdm = {
           enable = true;
