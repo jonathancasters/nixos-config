@@ -10,6 +10,17 @@
     development.enable = true;
     graphical.enable = true;
     printing.enable = true;
+    base = {
+      network.mobile = {
+        enable = true;
+        wireless-interface = "wlp44s0";
+        wired-interfaces = {
+          "enp45s0" = {
+            macAddress = "58:11:22:88:fe:05";
+          };
+        };
+      };
+    };
   };
 
   # define all system users
@@ -46,8 +57,6 @@
       # sound
       alsa-utils                
       pulseaudio
-      # network management
-      networkmanagerapplet
       # C/C++ development
       clang-tools
       gnumake
@@ -113,7 +122,6 @@
     redshift.enable = true;
     # remote control
     teamviewer.enable = true;
-    openssh.allowSFTP = true;
     gnome.gnome-keyring.enable = true;
     # enable auto mounting for removable devices on Thunar
     gvfs.enable = true;

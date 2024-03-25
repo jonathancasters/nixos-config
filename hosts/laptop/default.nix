@@ -35,8 +35,4 @@
       windowManager.qtile.enable = true;
     };
   };
-  networking = {
-    hostName = "asus-vivobook-pro-16";
-    networkmanager.enable = true;
-  };
 }
