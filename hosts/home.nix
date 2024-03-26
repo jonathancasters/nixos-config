@@ -53,6 +53,7 @@
   
   programs = {
     home-manager.enable = true;
+    direnv.enable = true;
     ssh.enable = true;
     gpg.enable = true;
     rofi = {
