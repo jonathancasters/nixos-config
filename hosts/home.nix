@@ -62,9 +62,9 @@
   };
 
   services = {
-     gpg-agent = {
+    gpg-agent = {
       enable = true;
-      pinentryFlavor = "gtk2";
+      pinentryPackage = pkgs.pinentry-rofi;
     };
   };
   

@@ -1,4 +1,4 @@
-{ config, lib, user, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
   imports = [
@@ -22,5 +22,9 @@
         vscode.enable = lib.mkDefault true;
       };
     };
+
+    environment.systemPackages = [
+      pkgs.devbox
+    ];
   };
 }
