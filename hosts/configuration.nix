@@ -99,9 +99,13 @@
         enable = true;
       	theme = "robbyrussell";
         plugins = [
-          "git" "aliases" "sudo" 
+          "git" "aliases" "sudo" "direnv"
         ];
       };
+
+      interactiveShellInit = ''
+        eval "$(direnv hook zsh)"
+      '';
     };
   };
 
