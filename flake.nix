@@ -17,9 +17,14 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, agenix}:
+  outputs = inputs @ { self, nixpkgs, home-manager, agenix, devshell}:
     let
       user = "castersj";
 
@@ -33,7 +38,9 @@
       inherit (lib) mapModule;
     in 
     {
-      nixpkgs.overlays = mapModule ./overlays import;
+      nixpkgs.overlays = mapModule ./overlays import ++ [
+        devshell.overlay
+      ];
 
       nixosConfigurations = (
         import ./hosts {                                           # Imports ./hosts/default.nix
