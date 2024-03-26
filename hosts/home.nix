@@ -7,6 +7,7 @@
     
     packages = with pkgs; [
       arandr    # Screen management
+      autorandr 
       rofi      # Launch apps
       dconf
       simplescreenrecorder
