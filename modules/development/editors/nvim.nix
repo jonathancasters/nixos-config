@@ -272,6 +272,7 @@ in {
       home.packages = with pkgs; [
         nixd
         llvmPackages_15.clang-unwrapped
+        nodePackages.pyright
       ];
 
       programs = {
