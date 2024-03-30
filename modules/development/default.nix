@@ -20,6 +20,7 @@
         docker.enable = lib.mkDefault true;
         nvim.enable = lib.mkDefault true;
         vscode.enable = lib.mkDefault true;
+        jetbrains.enable = lib.mkDefault true;
       };
     };
 
