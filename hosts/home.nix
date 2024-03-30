@@ -38,7 +38,7 @@
       unrar
       xclip
 
-      insomnia
+      postman
       
       anki # flashcards
     ];
