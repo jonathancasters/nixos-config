@@ -38,12 +38,6 @@
       unrar
       xclip
 
-      # Development
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
-      jetbrains.datagrip
-
       insomnia
       
       anki # flashcards

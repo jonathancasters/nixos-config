@@ -6,5 +6,6 @@
   imports = [
     ./nvim.nix
     ./vscode.nix
+    ./jetbrains.nix
   ];
 }
