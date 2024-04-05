@@ -25,7 +25,7 @@
     };
 
     environment.systemPackages = [
-      pkgs.devbox
+      pkgs.conda
     ];
   };
 }
