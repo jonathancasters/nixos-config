@@ -25,7 +25,6 @@
     };
 
     environment.systemPackages = [
-      pkgs.conda
     ];
   };
 }
