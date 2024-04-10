@@ -31,6 +31,7 @@
       spotify
       discord
       cura
+      blender
       
       # Filemanagement
       zip
