@@ -38,6 +38,7 @@
       unzip
       unrar
       xclip
+      filezilla
 
       postman
       
