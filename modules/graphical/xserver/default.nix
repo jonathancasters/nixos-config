@@ -8,28 +8,30 @@
   };
 
   config = lib.mkIf config.${user}.graphical.xserver.enable {
-    services.xserver = {
-      enable = true;
-      xkb.layout = "us";
-      desktopManager = {
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-          enableScreensaver = false;
-        };
-        wallpaper.mode = "scale";
-      };
-      displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.slick = {
+    services = {
+      xserver = {
+        enable = true;
+        xkb.layout = "us";
+        desktopManager = {
+          xfce = {
             enable = true;
+            noDesktop = true;
+            enableXfwm = false;
+            enableScreensaver = false;
+          };
+          wallpaper.mode = "scale";
+        };
+        displayManager = {
+          lightdm = {
+            enable = true;
+            greeters.slick = {
+              enable = true;
+            };
           };
         };
-        defaultSession = "none+qtile";
+        windowManager.qtile.enable = true;
       };
-      windowManager.qtile.enable = true;
+      displayManager.defaultSession = "qtile";
     };
   };
 }

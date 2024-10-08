@@ -36,7 +36,7 @@
       wireless = {
         enable = true;
         interfaces = [ wireless-interface ];
-        environmentFile = config.age.secrets."passwords/networks.age".path;
+        secretsFile = config.age.secrets."passwords/networks.age".path;
         userControlled = {
           enable = true;
           group = "network";
