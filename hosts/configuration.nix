@@ -106,6 +106,10 @@
       interactiveShellInit = ''
         eval "$(direnv hook zsh)"
       '';
+
+      shellInit = "
+        export GPG_TTY=$(tty)
+      ";
     };
   };
 
