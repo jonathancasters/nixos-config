@@ -20,11 +20,7 @@
       jetbrains-mono
       font-awesome
       corefonts
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
+      nerd-fonts.fira-code
     ];
 
     home-manager.users.${user} = {
