@@ -19,6 +19,7 @@
       btop	# Resource manager
       ranger	# File manager
       tldr	# Helper
+      ripgrep
 
       # Video/Audio
       pavucontrol
