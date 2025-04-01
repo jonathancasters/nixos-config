@@ -122,6 +122,10 @@ let
     lspconfig.pyright.setup({
       capabilities = lsp_capabilities,
     })
+    -- Go
+    lspconfig.gopls.setup({
+      capabilities = lsp_capabilities,
+    })
 
     api.nvim_create_autocmd('LspAttach', {
       desc = 'LSP actions',
@@ -273,6 +277,7 @@ in {
         nixd
         llvmPackages_15.clang-unwrapped
         pyright
+        gopls
       ];
 
       programs = {
